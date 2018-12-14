@@ -1,0 +1,25 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@include file="/context/mytags.jsp"%>
+<!DOCTYPE html>
+<html>
+<head>
+<title>用户信息</title>
+<t:base type="jquery,easyui,tools"></t:base>
+</head>
+<body style="overflow-y: hidden" scroll="no">
+<t:datagrid name="testZhangTaskList" title="入职审批列表" actionUrl="activitiController.do?taskList&busCode=dev_form" idField="id">
+ <t:dgCol title="编号" field="id" hidden="false"></t:dgCol>
+ <t:dgCol title="入职人" field="TSUser_userName"></t:dgCol>
+ <t:dgCol title="状态" field="TSPrjstatus_description"></t:dgCol>
+ <t:dgCol title="当前环节" field="Process_task_name"></t:dgCol>
+ <t:dgCol title="办理人" field="Process_task_assignee"></t:dgCol>
+ <t:dgCol hidden="false" title="TASK ID(该字段隐藏)" field="Process_task_id"></t:dgCol>
+ <t:dgCol hidden="false" title="key" field="Process_task_taskDefinitionKey"></t:dgCol>
+ <t:dgCol title="操作" field="opt" width="100"></t:dgCol>
+ <t:dgConfOpt exp="Process_task_assignee#empty#true" url="activitiController.do?claim&taskId={Process_task_id}" message="确定签收?" title="签收"></t:dgConfOpt>
+ <t:dgFunOpt exp="Process_task_assignee#empty#false" funname="openhandle(Process_task_id,TSUser_userName)" title="办理"></t:dgFunOpt>
+ <t:dgFunOpt funname="processimg(Process_task_id,TSUser_userName)" title="<font style=color:red>流程图</font>"></t:dgFunOpt>
+</t:datagrid>
+
+          </body>
+</html>
