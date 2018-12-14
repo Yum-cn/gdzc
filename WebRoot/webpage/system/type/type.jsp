@@ -16,8 +16,8 @@
         </div>
         <div class="form">
             <label class="Validform_label"> <t:mutiLang langKey="dict.name"/>: </label>
-            <input name="typename" class="inputxt" value="${type.typename }" datatype="s1-10">
-            <span class="Validform_checktip">类型范围在1~10位字符</span>
+            <input name="typename" class="inputxt" value="${type.typename }" datatype="s1-15">
+            <span class="Validform_checktip">类型范围在1~15位字符</span>
         </div>
         <div class="form">
             <label class="Validform_label"> <t:mutiLang langKey="dict.code"/>: </label>

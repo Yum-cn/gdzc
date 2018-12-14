@@ -40,32 +40,38 @@ function uploadTemplateCallBack(url,name){
 		  <ul class="forminfo">
 		  		    <li>
 		      <label class="from-label-title">组别:</label>
-			  <select name="select">
+			  <!-- <select name="select">
 				<option value="1">综合管理组</option>
 				<option value="1">网络平台组</option>
 				<option value="1">安全平台组</option>
 				<option value="1">信息资源组</option>
 				<option value="1">应用系统组</option>
 				<option value="1">密码设备组</option>
-			  </select>
+			  </select> -->
+			  <t:dictSelect field="type" type="list"
+                                        typeGroupCode="groupType" defaultVal="" hasLabel="false"  title="组别"></t:dictSelect>
 		      <i class="Validform_checktip"></i>
 		    </li>
 		    <li>
 		      <label class="from-label-title">所属网络:</label>
-			  <select name="select">
+			  <!-- <select name="select">
 				<option value="1">市电子政务内网</option>
 				<option value="1">市委办公厅内网</option>
 				<option value="1">市委机关互联网</option>
 				<option value="1">党委办公厅专网</option>
 				<option value="1">国家电子政务内网天津接入区</option>		
-			  </select>
+			  </select> -->
+			   <t:dictSelect field="type" type="list"
+                                        typeGroupCode="netType" defaultVal="" hasLabel="false"  title="所属网络"></t:dictSelect>
 		      <i class="Validform_checktip"></i>
 		    </li>
 		    <li>
 		      <label class="from-label-title">所属项目:</label>
-			  <select name="select">
+			  <!-- <select name="select">
 				<option value="1">XXXXXX建设项目</option>	
-			  </select>
+			  </select> -->
+			  <t:dictSelect field="type" type="list"
+                                        typeGroupCode="proType" defaultVal="" hasLabel="false"  title="所属项目"></t:dictSelect>
 		      <i class="Validform_checktip"></i>
 		    </li>		    
 		    <li>
@@ -98,10 +104,11 @@ function uploadTemplateCallBack(url,name){
 		    </li>			    
 		    <li>
 		      <label class="from-label-title">设备型号:</label>
-		      <select name="select">
+		      <input id="code" name="code" type="text" class="dfinput" datatype="*" />
+		      <!-- <select name="select">
 				<option value="1">NSG3000-TE15P</option>
 				<option value="1">G1500-E005P</option>	
-			  </select>
+			  </select> -->
 		      <i class="Validform_checktip"></i>
 		    </li>			    
 		    <li>
@@ -150,7 +157,12 @@ function uploadTemplateCallBack(url,name){
 		      <label class="from-label-title">部署位置:</label>
 		      	<input id="code" name="code" type="text" class="dfinput" datatype="*"/>
 		      <i class="Validform_checktip"></i>
-		    </li>	
+		    </li>
+		    <li>
+              <label class="from-label-title">部署时间:</label>
+                <input id="code" name="code" type="text" class="dfinput" datatype="*" class="Wdate" onClick="WdatePicker()"/>
+              <i class="Validform_checktip"></i> 
+            </li>	
 		    <li>
 		      <label class="from-label-title">购买时间:</label>
 		      	<input id="code" name="code" type="text" class="dfinput" datatype="*" class="Wdate" onClick="WdatePicker()"/>
