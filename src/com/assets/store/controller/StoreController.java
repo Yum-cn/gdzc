@@ -11,6 +11,7 @@ import java.text.SimpleDateFormat;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.apache.commons.lang3.StringUtils;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -142,6 +143,8 @@ public class StoreController extends BaseController {
 		try{
 			String status = request.getParameter("status");
 			request.setAttribute("status", status);
+			String category = request.getParameter("category");
+			request.setAttribute("category", category);
 			return new ModelAndView("com/assets/store/selectList");
 		}catch (Exception e) {
 			throw new BusinessException(e.getMessage());
@@ -167,10 +170,11 @@ public class StoreController extends BaseController {
 //			sb.append("资产类别：\n");
 			sb.append("入库时间："+se.getStorageTime()+"\n");
 			sb.append("资产名称："+se.getName()+"\n");
-			sb.append("品牌："+se.getBrand()+"\n");
+//			sb.append("品牌："+se.getBrand()+"\n");
 //			sb.append("渠       道："+se.getSource()+"\n");
 			sb.append("金 额："+se.getAmount()+"\n");
-			sb.append("过保时间："+se.getOverInsuranceTime()+"\n");
+//			sb.append("过保时间："+se.getOverInsuranceTime()+"\n");
+			sb.append("过保时间："+se.getRepairEndTime()+"\n");
 			DimensionCode.encoderCode(sb.toString(), response,qrFile);
 			request.setAttribute("se", se);
 
@@ -212,21 +216,23 @@ public class StoreController extends BaseController {
 		//查询条件组装器
 		org.qihuasoft.core.extend.hqlsearch.HqlGenerateUtil.installHql(cq, store, request.getParameterMap());
 		try{
+			
+			//入库、出库、转移、退库、维修、报废
+			
 			String status = request.getParameter("status");
 			if(status!=null && "lingyong".equals(status)){//领用功能
 				CriteriaQuery cq1 = new CriteriaQuery(StoreEntity.class, dataGrid);
 				cq1.eq("bpmStatus", "wy");
 				cq1.eq("bpmStatus", "xz");
 				cq.add(cq.or(cq1, 0, 1));
-			}
-			if(status!=null && "diaobo".equals(status)){//调拨功能
+			}else if(status!=null && "diaobo".equals(status)){//调拨功能
 				cq.eq("bpmStatus", "yy");
-			}
-			if(status!=null && "tuiku".equals(status)){//退库功能
+			}else if(status!=null && "tuiku".equals(status)){//退库功能
 				cq.eq("bpmStatus", "yy");
-			}
-			if(status!=null && "weixiu".equals(status)){//维修功能
+			}else if(status!=null && "weixiu".equals(status)){//维修功能
 				cq.notEq("bpmStatus", "wx");
+			}else if(status!=null && "ruku".equals(status)){//领用功能
+				cq.eq("bpmStatus", "wy");
 			}
 		//自定义追加查询条件
 		}catch (Exception e) {
@@ -356,14 +362,27 @@ public class StoreController extends BaseController {
 	 * 
 	 * @return
 	 */
+	/**
+	 * @author   Yum
+	 */
 	@RequestMapping(params = "goAdd")
-	public ModelAndView goAdd(StoreEntity store, HttpServletRequest req) {
+	public ModelAndView goAdd(StoreEntity store,String category, HttpServletRequest req) {
 		if (StringUtil.isNotEmpty(store.getId())) {
 			store = storeService.getEntity(StoreEntity.class, store.getId());
-			req.setAttribute("storePage", store);
+		}else{
+			store = new StoreEntity();
 		}
-
-		return new ModelAndView("com/assets/store/store-add");
+		store.setCategory(category);
+		if(StringUtils.equals(category, "software")){
+			store.setType("software");
+			req.setAttribute("storePage", store);
+			return new ModelAndView("com/assets/store/store-add-software");
+		}else if(StringUtils.equals(category, "hardware")){
+			req.setAttribute("storePage", store);
+			return new ModelAndView("com/assets/store/store-add-hardware");
+		}
+		
+		return new ModelAndView("");
 	}
 	/**
 	 * 入库管理编辑页面跳转
@@ -375,6 +394,12 @@ public class StoreController extends BaseController {
 		if (StringUtil.isNotEmpty(store.getId())) {
 			store = storeService.getEntity(StoreEntity.class, store.getId());
 			req.setAttribute("storePage", store);
+			
+			if(StringUtils.equals(store.getCategory(), "software")){
+				return new ModelAndView("com/assets/store/store-update-software");
+			}else if(StringUtils.equals(store.getCategory(), "hardware")){
+				return new ModelAndView("com/assets/store/store-update-hardware");
+			}
 		}
 		return new ModelAndView("com/assets/store/store-update");
 	}

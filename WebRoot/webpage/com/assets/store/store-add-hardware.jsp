@@ -38,73 +38,68 @@ function uploadTemplateCallBack(url,name){
 		<form name="form1" id="form1" method="post" action="storeController.do?doAdd">
 		<div class="formbody">
 		  <ul class="forminfo">
-		  		    <li>
+		  	 <li>
 		      <label class="from-label-title">组别:</label>
-			  <!-- <select name="select">
-				<option value="1">综合管理组</option>
-				<option value="1">网络平台组</option>
-				<option value="1">安全平台组</option>
-				<option value="1">信息资源组</option>
-				<option value="1">应用系统组</option>
-				<option value="1">密码设备组</option>
-			  </select> -->
-			  <t:dictSelect field="type" type="list"
-                                        typeGroupCode="groupType" defaultVal="" hasLabel="false"  title="组别"></t:dictSelect>
+			  <t:dictSelect field="groupTypeCode" type="list"
+                                        typeGroupCode="groupType" defaultVal="" hasLabel="false"  title="组别" datatype="*"></t:dictSelect>
 		      <i class="Validform_checktip"></i>
+		      <label class="Validform_label" style="display: none;">组别</label>
 		    </li>
 		    <li>
 		      <label class="from-label-title">所属网络:</label>
-			  <!-- <select name="select">
-				<option value="1">市电子政务内网</option>
-				<option value="1">市委办公厅内网</option>
-				<option value="1">市委机关互联网</option>
-				<option value="1">党委办公厅专网</option>
-				<option value="1">国家电子政务内网天津接入区</option>		
-			  </select> -->
-			   <t:dictSelect field="type" type="list"
-                                        typeGroupCode="netType" defaultVal="" hasLabel="false"  title="所属网络"></t:dictSelect>
+			   <t:dictSelect field="netTypeCode" type="list"
+                                        typeGroupCode="netType" defaultVal="" hasLabel="false"  title="所属网络" datatype="*"></t:dictSelect>
 		      <i class="Validform_checktip"></i>
+		      <label class="Validform_label" style="display: none;">所属网络</label>
 		    </li>
 		    <li>
 		      <label class="from-label-title">所属项目:</label>
 			  <!-- <select name="select">
 				<option value="1">XXXXXX建设项目</option>	
 			  </select> -->
-			  <t:dictSelect field="type" type="list"
-                                        typeGroupCode="proType" defaultVal="" hasLabel="false"  title="所属项目"></t:dictSelect>
+			  <t:dictSelect field="proTypeCode" type="list"
+                                        typeGroupCode="proType" defaultVal="" hasLabel="false"  title="所属项目" datatype="*"></t:dictSelect>
 		      <i class="Validform_checktip"></i>
+		      <label class="Validform_label" style="display: none;">所属项目</label>
 		    </li>		    
 		    <li>
 		      <label class="from-label-title">设备名称:</label>
-		      	<input id="code" name="code" type="text" class="dfinput" datatype="*"/>
+		      	<input id="code" name="name" type="text" class="dfinput" datatype="*"/>
 		      <i class="Validform_checktip"></i>
+		      <label class="Validform_label" style="display: none;">设备名称</label>
 		    </li>	    
 		    <li>
 		      <label class="from-label-title">部署软件清单:</label>
-		      	<input name="relationId" id="relationId" type="hidden" value="">
-                <input name="relationName" class="dfinput" style="vertical-align: top; " value="" id="relationName" datatype="*" />
+		      	<input name="category" id="category" type="hidden" value="${storePage.category}">
+		      	<input name="softListIds" id="softListIds" type="hidden" value="">
+                <input name="softListNames" class="dfinput" style="vertical-align: top; " value="" id="relationName" datatype="*" />
                 <a href="#" class="layui-btn" plain="true" icon="icon-search" onClick="choose_402881f3635381d50163539e13530004()">选择</a>
                 <a href="#" class="layui-btn" plain="true" icon="icon-redo" onClick="clearAll_402881f3635381d50163539e13530004();">清空</a>
 		      <i class="Validform_checktip">部署软件清单</i>
+		      <label class="Validform_label" style="display: none;">部署软件清单</label>
 		    </li>	
 		    <li>
 		      <label class="from-label-title">资产编码:</label>
 		      	<input id="code" name="code" type="text" class="dfinput" datatype="*"/>
 		      <i class="Validform_checktip"></i>
-		    </li>		    
+		      <label class="Validform_label" style="display: none;">资产编码</label>
+		    </li>	
+		    <li>
+             <label class="from-label-title">资产类别:</label>
+               <t:dictSelect field="type" type="list"
+               typeGroupCode="zclb" defaultVal="${storePage.type}" hasLabel="false"  title="资产类别" datatype="*"></t:dictSelect>  
+             <i class="Validform_checktip"></i>
+             <label class="Validform_label" style="display: none;">资产类别</label>
+           </li>	    
 		    <li>
 		      <label class="from-label-title">品牌:</label>
-			  <select name="select">
-			  	<option value="1">浪潮</option>
-			  	<option value="1">网神</option>
-				<option value="1">天融信</option>
-				<option value="1">锐捷</option>	
-			  </select>
+		      <input id="code" name="brand" type="text" class="dfinput" datatype="*"/>
 		      <i class="Validform_checktip"></i>
+		      <label class="Validform_label" style="display: none;">品牌</label>
 		    </li>			    
 		    <li>
 		      <label class="from-label-title">设备型号:</label>
-		      <input id="code" name="code" type="text" class="dfinput" datatype="*" />
+		      <input id="code" name="deviceType" type="text" class="dfinput" />
 		      <!-- <select name="select">
 				<option value="1">NSG3000-TE15P</option>
 				<option value="1">G1500-E005P</option>	
@@ -113,65 +108,85 @@ function uploadTemplateCallBack(url,name){
 		    </li>			    
 		    <li>
 		      <label class="from-label-title">设备序列号:</label>
-		      	<input id="code" name="code" type="text" class="dfinput" datatype="*" />
+		      	<input id="code" name="deviceSN" type="text" class="dfinput" datatype="*" />
 		      <i class="Validform_checktip"></i>
-		    </li>		    
+		      <label class="Validform_label" style="display: none;">设备序列号</label>
+		    </li>
+		    <li>
+		      <label class="from-label-title">设备价格:</label>
+		      	<input id="code" name="amount" type="text" class="dfinput" />
+		      <i class="Validform_checktip"></i>
+		      <label class="Validform_label" style="display: none;">设备价格</label>
+		    </li>
+		    <li>
+              <label class="from-label-title">设备状态:</label>
+              <t:dictSelect field="deviceStatusCode" type="list"
+                                        typeGroupCode="deviceStatus" defaultVal="" hasLabel="false"  title="设备状态"  datatype="*" ></t:dictSelect>
+              <i class="Validform_checktip"></i>
+              <label class="Validform_label" style="display: none;">设备状态</label>
+            </li>
+            <li>
+             <label class="from-label-title">入库时间:</label>
+               <input id="storageTime" name="storageTime" type="text" class="Wdate" onClick="WdatePicker()" datatype="*"/>
+             <i class="Validform_checktip"></i>
+             <label class="Validform_label" style="display: none;">入库时间</label>
+            </li>		    
 		    <li>
 		      <label class="from-label-title">CPU:</label>
-		      	<input id="code" name="code" type="text" class="dfinput" datatype="*" />
+		      	<input id="code" name="cpu" type="text" class="dfinput" />
 		      <i class="Validform_checktip"></i>
 		    </li>		    
 		    <li>
 		      <label class="from-label-title">内存:</label>
-		      	<input id="code" name="code" type="text" class="dfinput" datatype="*" />
+		      	<input id="code" name="memory" type="text" class="dfinput"  />
 		      <i class="Validform_checktip"></i>
 		    </li>		    
 		    <li>
 		      <label class="from-label-title">硬盘:</label>
-		      	<input id="code" name="code" type="text" class="dfinput" datatype="*"/>
+		      	<input id="code" name="disk" type="text" class="dfinput" />
 		      <i class="Validform_checktip"></i>
 		    </li>		
 		    <li>
 		      <label class="from-label-title">责任单位:</label>
-			  <select name="select">
-			  	<option value="1">天津安华易科技发展有限公司</option>
-			  </select>
+			  <t:dictSelect field="devicePartmentCode" type="list"
+                                        typeGroupCode="zrdw" defaultVal="" hasLabel="false"  title="责任单位"></t:dictSelect>
 		      <i class="Validform_checktip"></i>
 		    </li>		
 		    <li>
 		      <label class="from-label-title">责任人:</label>
-		      	<input id="code" name="code" type="text" class="dfinput" datatype="*"/>
+		      	<input id="code" name="devicePerson" type="text" class="dfinput"/>
 		      <i class="Validform_checktip"></i>
 		    </li>	
 		    <li>
 		      <label class="from-label-title">联系方式:</label>
-		      	<input id="code" name="code" type="text" class="dfinput" datatype="*"/>
+		      	<input id="code" name="devicePhone" type="text" class="dfinput" />
 		      <i class="Validform_checktip"></i>
 		    </li>
 		    <li>
 		      <label class="from-label-title">安装地点:</label>
-		      	<input id="code" name="code" type="text" class="dfinput" datatype="*"/>
+		      	<input id="code" name="installPlace" type="text" class="dfinput" />
 		      <i class="Validform_checktip"></i>
 		    </li>		
 		    <li>
 		      <label class="from-label-title">部署位置:</label>
-		      	<input id="code" name="code" type="text" class="dfinput" datatype="*"/>
+		      	<input id="code" name="deployPlace" type="text" class="dfinput" />
 		      <i class="Validform_checktip"></i>
 		    </li>
 		    <li>
               <label class="from-label-title">部署时间:</label>
-                <input id="code" name="code" type="text" class="dfinput" datatype="*" class="Wdate" onClick="WdatePicker()"/>
+                <input id="code" name="deployTime" type="text" class="Wdate" onClick="WdatePicker()"/>
               <i class="Validform_checktip"></i> 
             </li>	
 		    <li>
 		      <label class="from-label-title">购买时间:</label>
-		      	<input id="code" name="code" type="text" class="dfinput" datatype="*" class="Wdate" onClick="WdatePicker()"/>
+		      	<input id="payTime" name="payTime" type="text" class="Wdate" onClick="WdatePicker()"/>
 		      <i class="Validform_checktip"></i> 
 		    </li>	
 		    <li>
-		      <label class="from-label-title">维保到期时间:</label>
-		      	<input id="code" name="code" type="text" class="dfinput" datatype="*" class="Wdate" onClick="WdatePicker()"/>
+		      <label class="from-label-title">维保到期时间(过保时间):</label>
+		      	<input id="code" name="repairEndTime" type="text" class="Wdate"onClick="WdatePicker({ dateFmt: 'yyyy-MM-dd HH:mm:ss' })" datatype="*"/>
 		      <i class="Validform_checktip"></i>
+		      <label class="Validform_label" style="display: none;">维保到期时间</label>
 		    </li>		    		    		        			    	        
 				<li>
 					<label class="from-label-title">
@@ -285,5 +300,84 @@ $(function(){
     	$("#form1").submit();
   	});
 })
+var windowapi = frameElement.api, W = windowapi.opener;
+    function choose_402881f3635381d50163539e13530004() {
+        var url = 'storeController.do?selectList&status=ruku&category=software';
+        var initValue = $('#roleid').val();
+        url += '&ids=' + initValue;
+        if (typeof (windowapi) == 'undefined') {
+            $.dialog({
+                content : 'url:' + url,
+                zIndex : 2100,
+                title : '资产列表',
+                lock : true,
+                width : 800,
+                height : 350,
+                left : '85%',
+                top : '65%',
+                opacity : 0.4,
+                button : [ {
+                    name : '确定',
+                    callback : clickcallback_402881f3635381d50163539e13530004,
+                    focus : true
+                }, {
+                    name : '取消',
+                    callback : function() {
+                    }
+                } ]
+            });
+        } else {
+            $.dialog({
+                content : 'url:' + url,
+                zIndex : 2100,
+                title : '资产列表',
+                lock : true,
+                parent : windowapi,
+                width : 800,
+                height : 350,
+                left : '85%',
+                top : '65%',
+                opacity : 0.4,
+                button : [ {
+                    name : '确定',
+                    callback : clickcallback_402881f3635381d50163539e13530004,
+                    focus : true
+                }, {
+                    name : '取消',
+                    callback : function() {
+                    }
+                } ]
+            });
+        }
+    }
+    function clearAll_402881f3635381d50163539e13530004() {
+        if ($('#relationName').length >= 1) {
+            $('#relationName').val('');
+            $('#relationName').blur();
+        }
+        if ($("input[name='relationName']").length >= 1) {
+            $("input[name='relationName']").val('');
+            $("input[name='relationName']").blur();
+        }
+        $('#relationId').val("");
+    }
+    function clickcallback_402881f3635381d50163539e13530004() {
+        iframe = this.iframe.contentWindow;
+        var code = iframe.getstoreListSelections('code');
+        var name = iframe.getstoreListSelections('name');
+        var returnName = name + "("+code+")";
+        if ($('#relationName').length >= 1) {
+            $('#relationName').val(returnName);
+            $('#relationName').blur();
+        }
+        if ($("input[name='relationName']").length >= 1) {
+            $("input[name='relationName']").val(returnName);
+            $("input[name='relationName']").blur();
+        }
+        var id = iframe.getstoreListSelections('id');
+        if (id !== undefined && id != "") {
+            $('#relationId').val(id);
+        }
+    }
 </script>
 

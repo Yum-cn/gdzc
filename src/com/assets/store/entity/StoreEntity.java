@@ -50,9 +50,7 @@ public class StoreEntity implements java.io.Serializable {
 	private java.lang.String sysCompanyCode;
 	/**流程状态*/
 	private java.lang.String bpmStatus;
-	/**资产编码*/
-	@Excel(name="资产编码")
-	private java.lang.String code;
+
 	/**资产类别*/
 	@Excel(name="资产类别")
 	private java.lang.String type;
@@ -65,9 +63,7 @@ public class StoreEntity implements java.io.Serializable {
 	/**来源*/
 	@Excel(name="来源")
 	private java.lang.String source;
-	/**品牌*/
-	@Excel(name="品牌")
-	private java.lang.String brand;
+
 	/**渠道*/
 	@Excel(name="渠道")
 	private java.lang.String channel;
@@ -83,12 +79,99 @@ public class StoreEntity implements java.io.Serializable {
 	/**预计报废时间*/
 	@Excel(name="预计报废时间",format = "yyyy-MM-dd")
 	private java.util.Date discardedTime;
+
+	
+	
+	/**资产分类*/
+	@Excel(name="资产分类")
+	private String category;
+	/**组别*/
+	private String groupTypeCode;
+	@Excel(name="组别")
+	private String groupTypeName;
+	/**所属网络*/
+	private String netTypeCode;
+	@Excel(name="所属网络")
+	private String netTypeName;
+	/**设备名称*/
+	@Excel(name="设备名称")
+	private String deviceName;
+	/**所属项目*/
+	private String proTypeCode;
+	@Excel(name="所属项目")
+	private String proTypeName;
+	/**部署软件清单*/
+	private String softListIds;
+	@Excel(name="软件清单")
+	private String softListNames;
+	/**资产编码*/
+	@Excel(name="资产编码")
+	private java.lang.String code;
+	/**品牌*/
+	@Excel(name="品牌")
+	private java.lang.String brand;
+	/**设备型号*/
+	@Excel(name="设备型号")
+	private String deviceType;
+	/**设备序列号*/
+	@Excel(name="设备序列号")
+	private String deviceSN;
+	/**CPU*/
+	@Excel(name="cpu")
+	private String cpu;
+	/**内存*/
+	@Excel(name="内存")
+	private String memory;
+	/**硬盘*/
+	@Excel(name="硬盘")
+	private String disk;
+	/**责任单位*/
+	private String devicePartmentCode;
+	@Excel(name="责任单位")
+	private String devicePartmentName;
+	/**责任人*/
+	@Excel(name="责任人")
+	private String devicePerson;
+	/**联系方式*/
+	@Excel(name="联系方式")
+	private String devicePhone;
+	/**安装地点*/
+	@Excel(name="安装地点")
+	private String installPlace;
+	/**部署位置*/
+	@Excel(name="部署位置")
+	private String deployPlace;
+	/**部署时间*/
+	@Excel(name="部署时间")
+	private String deployTime;
+	/**购买时间*/
+	@Excel(name="购买时间")
+	private String payTime;
+	/**维修到期时间*/
+	@Excel(name="维修到期时间")
+	private String repairEndTime;
+	/**合同文件*/
+	@Excel(name="合同名称")
+	private java.lang.String contractName;
+	private java.lang.String contractPath;
 	/**备注*/
 	@Excel(name="备注")
 	private java.lang.String remark;
-
-	private java.lang.String contractName;
-	private java.lang.String contractPath;
+	/**设备状态*/
+	private String deviceStatusCode;
+	@Excel(name="设备状态")
+	private String deviceStatusName;
+	
+	/**版本*/
+	@Excel(name="版本")
+	private String version;
+	/**厂商*/
+	@Excel(name="厂商")
+	private String manufacturer;
+	/**供应商*/
+	@Excel(name="供应商")
+	private String supplier;
+	
 	/**
 	 *方法: 取得java.lang.String
 	 *@return: java.lang.String  主键
@@ -451,6 +534,222 @@ public class StoreEntity implements java.io.Serializable {
 
 	public void setContractPath(java.lang.String contractPath) {
 		this.contractPath = contractPath;
+	}
+
+	public String getGroupTypeCode() {
+		return groupTypeCode;
+	}
+
+	public void setGroupTypeCode(String groupTypeCode) {
+		this.groupTypeCode = groupTypeCode;
+	}
+
+	public String getGroupTypeName() {
+		return groupTypeName;
+	}
+
+	public void setGroupTypeName(String groupTypeName) {
+		this.groupTypeName = groupTypeName;
+	}
+
+	public String getNetTypeCode() {
+		return netTypeCode;
+	}
+
+	public void setNetTypeCode(String netTypeCode) {
+		this.netTypeCode = netTypeCode;
+	}
+
+	public String getNetTypeName() {
+		return netTypeName;
+	}
+
+	public void setNetTypeName(String netTypeName) {
+		this.netTypeName = netTypeName;
+	}
+
+	public String getDeviceName() {
+		return deviceName;
+	}
+
+	public void setDeviceName(String deviceName) {
+		this.deviceName = deviceName;
+	}
+
+	public String getProTypeCode() {
+		return proTypeCode;
+	}
+
+	public void setProTypeCode(String proTypeCode) {
+		this.proTypeCode = proTypeCode;
+	}
+
+	public String getProTypeName() {
+		return proTypeName;
+	}
+
+	public void setProTypeName(String proTypeName) {
+		this.proTypeName = proTypeName;
+	}
+
+	public String getSoftListIds() {
+		return softListIds;
+	}
+
+	public void setSoftListIds(String softListIds) {
+		this.softListIds = softListIds;
+	}
+
+	public String getSoftListNames() {
+		return softListNames;
+	}
+
+	public void setSoftListNames(String softListNames) {
+		this.softListNames = softListNames;
+	}
+
+	public String getDeviceType() {
+		return deviceType;
+	}
+
+	public void setDeviceType(String deviceType) {
+		this.deviceType = deviceType;
+	}
+
+	public String getDeviceSN() {
+		return deviceSN;
+	}
+
+	public void setDeviceSN(String deviceSN) {
+		this.deviceSN = deviceSN;
+	}
+
+	public String getCpu() {
+		return cpu;
+	}
+
+	public void setCpu(String cpu) {
+		this.cpu = cpu;
+	}
+
+	public String getMemory() {
+		return memory;
+	}
+
+	public void setMemory(String memory) {
+		this.memory = memory;
+	}
+
+	public String getDisk() {
+		return disk;
+	}
+
+	public void setDisk(String disk) {
+		this.disk = disk;
+	}
+
+	public String getDevicePartmentCode() {
+		return devicePartmentCode;
+	}
+
+	public void setDevicePartmentCode(String devicePartmentCode) {
+		this.devicePartmentCode = devicePartmentCode;
+	}
+
+	public String getDevicePartmentName() {
+		return devicePartmentName;
+	}
+
+	public void setDevicePartmentName(String devicePartmentName) {
+		this.devicePartmentName = devicePartmentName;
+	}
+
+	public String getDevicePerson() {
+		return devicePerson;
+	}
+
+	public void setDevicePerson(String devicePerson) {
+		this.devicePerson = devicePerson;
+	}
+
+	public String getDevicePhone() {
+		return devicePhone;
+	}
+
+	public void setDevicePhone(String devicePhone) {
+		this.devicePhone = devicePhone;
+	}
+
+	public String getInstallPlace() {
+		return installPlace;
+	}
+
+	public void setInstallPlace(String installPlace) {
+		this.installPlace = installPlace;
+	}
+
+	public String getDeployPlace() {
+		return deployPlace;
+	}
+
+	public void setDeployPlace(String deployPlace) {
+		this.deployPlace = deployPlace;
+	}
+
+	public String getDeployTime() {
+		return deployTime;
+	}
+
+	public void setDeployTime(String deployTime) {
+		this.deployTime = deployTime;
+	}
+
+	public String getPayTime() {
+		return payTime;
+	}
+
+	public void setPayTime(String payTime) {
+		this.payTime = payTime;
+	}
+
+	public String getRepairEndTime() {
+		return repairEndTime;
+	}
+
+	public void setRepairEndTime(String repairEndTime) {
+		this.repairEndTime = repairEndTime;
+	}
+
+	public String getDeviceStatusCode() {
+		return deviceStatusCode;
+	}
+
+	public void setDeviceStatusCode(String deviceStatusCode) {
+		this.deviceStatusCode = deviceStatusCode;
+	}
+
+	public String getDeviceStatusName() {
+		return deviceStatusName;
+	}
+
+	public void setDeviceStatusName(String deviceStatusName) {
+		this.deviceStatusName = deviceStatusName;
+	}
+
+	public String getCategory() {
+		return category;
+	}
+
+	public void setCategory(String category) {
+		this.category = category;
+	}
+
+	public String getVersion() {
+		return version;
+	}
+
+	public void setVersion(String version) {
+		this.version = version;
 	}
 	
 	

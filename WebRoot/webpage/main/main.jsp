@@ -26,7 +26,7 @@
   <div class="layui-header header header-demo">
   <div class="layui-main">
     <a class="logo" style="width:350px;">
-      <img src="${pageContext.request.contextPath}/plug-in/skin2.0/images/logo-1.png" alt="FMS" style="width:390px;height:38px;">
+      <%-- <img src="${pageContext.request.contextPath}/plug-in/skin2.0/images/logo-1.png" alt="FMS" style="width:390px;height:38px;"> --%>
     </a>
       <ul class="layui-nav admin-header-item">
 		<c:forEach items="${menuMap }" var="functionMap">

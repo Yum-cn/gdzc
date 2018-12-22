@@ -67,8 +67,8 @@ $(document).ready(function(){
 		    </div>
 		  </div>
     	  </form>
-          <button class="layui-btn" onclick="add('storeController.do?goAdd')"><i class="layui-icon"></i> 软件入库</button>
-          <button class="layui-btn" onclick="add('storeController.do?goAdd')"><i class="layui-icon"></i> 硬件入库</button>
+          <button class="layui-btn" onclick="add('storeController.do?goAdd&category=software')"><i class="layui-icon"></i> 软件入库</button>
+          <button class="layui-btn" onclick="add('storeController.do?goAdd&category=hardware')"><i class="layui-icon"></i> 硬件入库</button>
           <button class="layui-btn" onclick="add('storeController.do?goAdd')"><i class="layui-icon"></i> 导入</button>
           <button class="layui-btn" onclick="add('storeController.do?goAdd')"><i class="layui-icon"></i> 导出</button>
           <button class="layui-btn" onclick="deleteNewStyleALLSelect('提示','storeController.do?doBatchDel','')"><i class="layui-icon">&#xe640;</i> 批量删除</button>
@@ -91,6 +91,7 @@ $(document).ready(function(){
 <!-- 									<th>品牌</th> -->
 <!-- 									<th>渠道</th> -->
 									<th>价格</th>
+									<th>分类</th>
 									<th>状态</th>
 <!-- 									<th>过保时间</th> -->
 					        <th>操作</th>
@@ -100,23 +101,27 @@ $(document).ready(function(){
 					    <c:forEach items="${resultList}" var="resultList" varStatus="stu">
 					      <tr>
 									<td><input name="id" id="id" type="checkbox" value="${resultList.id}" />	</td>	
-									<td>安全平台组</td>		
-									<td>市电子政务内网</td>
+									<td><t:listDictParse parseId="${resultList.groupTypeCode}" style="1" typecode="groupType"></t:listDictParse></td>		
+									<td><t:listDictParse parseId="${resultList.netTypeCode}" style="1" typecode="netType"></t:listDictParse></td>
 									<td>sbbm00000${stu.index+1 }</td>	
 									<td>${resultList.name}</td>
-									<td><fmt:formatDate value="${resultList.storageTime}" pattern="yyyy-MM-dd"/></td>
+									<td>${resultList.payTime}<%-- <fmt:formatDate value="${resultList.storageTime}" pattern="yyyy-MM-dd"/> --%></td>
+									<c:set var="nowDate" value="<%=System.currentTimeMillis()%>"></c:set> 
+                                    <fmt:parseDate value="${resultList.repairEndTime}" pattern="yyyy-MM-dd HH:mm:ss" var="textDate"/>
 									<td 
-									${stu.index==0?'style="background-color: red;"':'2019-10-11' }
-									${stu.index==1?'style="background-color: yellow;"':'2019-10-11' }
-									>
 									
-									${stu.index==1?'2018-12-11':'' }
+									<c:if test="${((textDate.time-nowDate) <= 2592000000) && ((textDate.time-nowDate) > 0) }">style="background-color: yellow;"</c:if>
+									<c:if test="${(textDate.time-nowDate) <0 }">style="background-color: red;"</c:if>
+									>${resultList.repairEndTime}
+									<c:remove var="textDate"/>
+									<%-- ${stu.index==1?'2018-12-11':'' }
 									${stu.index==0?'2018-11-11':'' }
-									${stu.index!=0 && stu.index!=1?'2019-11-11':'' }
+									${stu.index!=0 && stu.index!=1?'2019-11-11':'' } --%>
 									</td>
 <%-- 									<td>${resultList.channel}</td> --%>
 									<td>${resultList.amount}</td>
-									<td><t:listDictParse parseId="${resultList.bpmStatus}" style="1" typecode="zczt"></t:listDictParse></td>	
+									<td>${resultList.category=='software'?'软件':'硬件'}</td>
+									<td><t:listDictParse parseId="${resultList.deviceStatusCode}" style="1" typecode="deviceStatus"></t:listDictParse><%-- <t:listDictParse parseId="${resultList.bpmStatus}" style="1" typecode="zczt"></t:listDictParse> --%></td>	
 <%-- 									<td><fmt:formatDate value="${resultList.overInsuranceTime}" pattern="yyyy-MM-dd"/></td> --%>
 
 					        <td><a href="javascript:void(0);" onclick="openWin('${resultList.id}');" class="tablelink">标签打印</a>
@@ -203,7 +208,7 @@ $(document).ready(function(){
 
 <script type="text/javascript">
 	function add(url){
-		window.location.href=url;
+		window.location.href=encodeURI(url);
 	}
 	function update(url){
 		window.location.href=url;
