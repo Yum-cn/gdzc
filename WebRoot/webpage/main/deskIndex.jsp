@@ -201,7 +201,7 @@ function resizeWidth (){
 
 </script>
 <script type="text/javascript">
-        // 基于准备好的dom，初始化echarts实例
+        /* // 基于准备好的dom，初始化echarts实例
         var myChart = echarts.init(document.getElementById('container3'));
 
         // 指定图表的配置项和数据
@@ -233,7 +233,7 @@ function resizeWidth (){
         };
 
         // 使用刚指定的配置项和数据显示图表。
-        myChart.setOption(option);
+        myChart.setOption(option); */
     </script>
     <script type="text/javascript">
         // 基于准备好的dom，初始化echarts实例
@@ -253,8 +253,8 @@ function resizeWidth (){
         	        orient: 'vertical',
         	        left: 'left',
         	        data: [
-							<c:forEach items="${zcztList}" var="zcztList">
-        	               '${zcztList[0]}',
+							<c:forEach items="${sswlList}" var="sswlList">
+        	               '${sswlList[0]}',
         	               </c:forEach>
 							]
         	    },
@@ -265,8 +265,8 @@ function resizeWidth (){
         	            radius : '55%',
         	            center: ['50%', '60%'],
         	            data:[
-							<c:forEach items="${zcztList}" var="zcztList">
-        	                {value:${zcztList[1]}, name:'${zcztList[0]}'},
+							<c:forEach items="${sswlList}" var="sswlList">
+        	                {value:${sswlList[1]}, name:'${sswlList[0]}'},
         	                </c:forEach>
         	            ],
         	            itemStyle: {
@@ -286,7 +286,7 @@ function resizeWidth (){
     </script>
 </html>
 <script>
-option = {
+/* option = {
 
 	    tooltip : {
 	        trigger: 'item',
@@ -319,23 +319,30 @@ option = {
 	            }
 	        }
 	    ]
-	};
+	}; 
 var myChart = echarts.init(document.getElementById('container2'));
 myChart.setOption(option);
 
-
+*/
 </script>
 <script>
+
 option = {
 	    xAxis: {
 	        type: 'category',
-	        data: ['综合管理组', '网络平台组', '安全平台组', '信息资源组', '应用系统组', '密码设备组']
+	        data: [<c:forEach items="${zbglList}" var="zbglList">
+            '${zbglList[0]}',
+            </c:forEach>]
 	    },
 	    yAxis: {
 	        type: 'value'
 	    },
 	    series: [{
-	        data: [120, 200, 150, 80, 70, 110],
+	        data: [
+	        <c:forEach items="${zbglList}" var="zbglList">
+            {value:${zbglList[1]}, name:'${zbglList[0]}'},
+            </c:forEach>
+            ],
 	        type: 'bar',
 	        label: {
                 normal: {
@@ -352,7 +359,7 @@ myChart.setOption(option);
 
 </script>
 <script>
-
+//cgglList
 option = {
 
     tooltip: {
@@ -376,13 +383,15 @@ option = {
     },
     yAxis: {
         type: 'category',
-        data: ['2016年','2017年','2018年','近三年总量']
+        data: [/* '2016年','2017年','2018年','近三年总量' */
+        	   <c:forEach items="${stringList}" var="strDesc">'${strDesc}',</c:forEach>
+        	  ]
     },
     series: [
         {
             name: '软件',
             type: 'bar',
-            data: [18203, 23489, 29034,30230],
+            data: [<c:forEach items="${softwareList}" var="softVar">'${softVar}',</c:forEach>],
             label: {
                 normal: {
                     show: true,
@@ -393,7 +402,7 @@ option = {
         {
             name: '硬件',
             type: 'bar',
-            data: [19325, 23438, 31000, 81807],
+            data: [<c:forEach items="${hardwareList}" var="hardVar">'${hardVar}',</c:forEach>],
             label: {
                 normal: {
                     show: true,
@@ -435,16 +444,16 @@ option = {
 	        data: ['2016年','2017年','2018年']
 	    },
 	    yAxis: {
-	        type: 'value',
+	        type: 'value'/* ,
 	        axisLabel: {
-	            formatter: '{value} 万元'
-	        }
+	            formatter: ['2016年','2017年','2018年']
+	        } */
 	    },
 	    series: [
 	        {
 	            name:'软件经费',
 	            type:'line',
-	            data:[211, 311, 651],
+	            data:[<c:forEach items="${softwareAmountList}" var="softwareAmountList">'${softwareAmountList}',</c:forEach>],
 	            markPoint: {
 	                data: [
 	                    {type: 'max', name: '最大值'},
@@ -460,7 +469,7 @@ option = {
 	        {
 	            name:'硬件经费',
 	            type:'line',
-	            data:[101, 212, 312],
+	            data:[<c:forEach items="${hardwareAmountList}" var="hardwareAmountList">'${hardwareAmountList}',</c:forEach>],
 	            markPoint: {
 	                data: [
 	                    {name: '周最低', value: -2, xAxis: 1, yAxis: -1.5}

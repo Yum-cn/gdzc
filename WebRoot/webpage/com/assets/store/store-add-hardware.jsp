@@ -54,9 +54,6 @@ function uploadTemplateCallBack(url,name){
 		    </li>
 		    <li>
 		      <label class="from-label-title">所属项目:</label>
-			  <!-- <select name="select">
-				<option value="1">XXXXXX建设项目</option>	
-			  </select> -->
 			  <t:dictSelect field="proTypeCode" type="list"
                                         typeGroupCode="proType" defaultVal="" hasLabel="false"  title="所属项目" datatype="*"></t:dictSelect>
 		      <i class="Validform_checktip"></i>
@@ -100,10 +97,6 @@ function uploadTemplateCallBack(url,name){
 		    <li>
 		      <label class="from-label-title">设备型号:</label>
 		      <input id="code" name="deviceType" type="text" class="dfinput" />
-		      <!-- <select name="select">
-				<option value="1">NSG3000-TE15P</option>
-				<option value="1">G1500-E005P</option>	
-			  </select> -->
 		      <i class="Validform_checktip"></i>
 		    </li>			    
 		    <li>
@@ -114,7 +107,7 @@ function uploadTemplateCallBack(url,name){
 		    </li>
 		    <li>
 		      <label class="from-label-title">设备价格:</label>
-		      	<input id="code" name="amount" type="text" class="dfinput" />
+		      	<input id="code" name="amount" type="text" class="dfinput"  datatype="/^-?[1-9]+(\.\d+)?$|^-?0(\.\d+)?$|^-?[1-9]+[0-9]*(\.\d+)?$/" nullmsg="不能为空" errormsg="必须为数字，可以有小数"/>
 		      <i class="Validform_checktip"></i>
 		      <label class="Validform_label" style="display: none;">设备价格</label>
 		    </li>
@@ -179,12 +172,13 @@ function uploadTemplateCallBack(url,name){
             </li>	
 		    <li>
 		      <label class="from-label-title">购买时间:</label>
-		      	<input id="payTime" name="payTime" type="text" class="Wdate" onClick="WdatePicker()"/>
+		      	<input id="payTime" name="payTime" type="text" class="Wdate" onClick="WdatePicker()" datatype="*"/>
 		      <i class="Validform_checktip"></i> 
+		      <label class="Validform_label" style="display: none;">购买时间</label>
 		    </li>	
 		    <li>
-		      <label class="from-label-title">维保到期时间(过保时间):</label>
-		      	<input id="code" name="repairEndTime" type="text" class="Wdate"onClick="WdatePicker({ dateFmt: 'yyyy-MM-dd HH:mm:ss' })" datatype="*"/>
+		      <label class="from-label-title">维保到期时间:</label>
+		      	<input id="repairEndTime" name="repairEndTime" type="text" class="Wdate"onClick="WdatePicker({ dateFmt: 'yyyy-MM-dd HH:mm:ss' })" datatype="*"/>
 		      <i class="Validform_checktip"></i>
 		      <label class="Validform_label" style="display: none;">维保到期时间</label>
 		    </li>		    		    		        			    	        

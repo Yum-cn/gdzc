@@ -46,57 +46,95 @@ function uploadTemplateCallBack(url,name){
 					<input id="sysOrgCode" name="sysOrgCode" type="hidden" value="${storePage.sysOrgCode }">
 					<input id="sysCompanyCode" name="sysCompanyCode" type="hidden" value="${storePage.sysCompanyCode }">
 					<input id="bpmStatus" name="bpmStatus" type="hidden" value="${storePage.bpmStatus }">
+                    <input name="category" id="category" type="hidden" value="${storePage.category}">
 <div class="formbody">
 
   <ul class="forminfo">
-    <li>
-      <label class="from-label-title">资产编码:</label>
-      	<input id="code" name="code" type="text" value="${storePage.code }" class="dfinput" datatype="*"/>
-      <i class="Validform_checktip"></i>
-    </li>
-    <li>
-      <label class="from-label-title">资产类别:</label>
-									<t:dictSelect field="type" type="list"
-										typeGroupCode="zclb" defaultVal="${storePage.type}" hasLabel="false"  title="资产类别"></t:dictSelect>      
-      <i class="Validform_checktip"></i>
-    </li>
-    <li>
-      <label class="from-label-title">入库时间:</label>
-      	<input id="storageTime" name="storageTime" type="text" value="<fmt:formatDate value="${storePage.storageTime }" pattern="yyyy-MM-dd"/>" class="dfinput" class="Wdate" onClick="WdatePicker()" datatype="*"/>
-      <i class="Validform_checktip"></i>
-    </li>
-    <li>
-      <label class="from-label-title">资产名称:</label>
-      	<input id="name" name="name" type="text" value="${storePage.name }" class="dfinput" datatype="*"/>
-      <i class="Validform_checktip"></i>
-    </li>
-    <li>
-      <label class="from-label-title">来源:</label>
-<%--       	<input id="source" name="source" type="text" value="${storePage.source }" class="dfinput" datatype="*"/> --%>
-		      	<t:dictSelect field="source" type="list"
-				typeGroupCode="LY" defaultVal="${storePage.source}" hasLabel="false"  title="来源"></t:dictSelect>
-      <i class="Validform_checktip"></i>
-    </li>
-    <li>
-      <label class="from-label-title">品牌:</label>
-      	<input id="brand" name="brand" type="text" value="${storePage.brand }" class="dfinput" datatype="*"/>
-      <i class="Validform_checktip"></i>
-    </li>
-    <li>
-      <label class="from-label-title">渠道:</label>
-      	<input id="channel" name="channel" type="text" value="${storePage.channel }" class="dfinput" datatype="*"/>
-      <i class="Validform_checktip"></i>
-    </li>
-    <li>
-      <label class="from-label-title">单价:</label>
-      	<input id="amount" name="amount" type="text" value="${storePage.amount }" class="dfinput" datatype="n"/>
-      <i class="Validform_checktip"></i>
-    </li>
-    <li>
-      <label class="from-label-title">过保时间:</label>
-      	<input id="overInsuranceTime" name="overInsuranceTime" type="text" value="<fmt:formatDate value="${storePage.overInsuranceTime }" pattern="yyyy-MM-dd"/>" class="dfinput" class="Wdate" onClick="WdatePicker()" datatype="*"/>
-      <i class="Validform_checktip"></i>
-    </li>
+            <li>
+              <label class="from-label-title">组别:</label>
+              <t:dictSelect field="groupTypeCode" type="list"
+                                        typeGroupCode="groupType" defaultVal="${storePage.groupTypeCode}" hasLabel="false"  title="组别" datatype="*"></t:dictSelect>
+              <i class="Validform_checktip"></i>
+              <label class="Validform_label" style="display: none;">组别</label>
+            </li>
+            <li>
+              <label class="from-label-title">所属网络:</label>
+               <t:dictSelect field="netTypeCode" type="list"
+                                        typeGroupCode="netType" defaultVal="${storePage.netTypeCode}" hasLabel="false"  title="所属网络" datatype="*"></t:dictSelect>
+              <i class="Validform_checktip"></i>
+              <label class="Validform_label" style="display: none;">所属网络</label>
+            </li>
+            <li>
+              <label class="from-label-title">所属项目:</label>
+              <t:dictSelect field="proTypeCode" type="list"
+                                        typeGroupCode="proType" defaultVal="${storePage.proTypeCode}" hasLabel="false"  title="所属项目" datatype="*"></t:dictSelect>
+              <i class="Validform_checktip"></i>
+              <label class="Validform_label" style="display: none;">所属项目</label>
+            </li>
+            <li>
+              <label class="from-label-title">应用名称:</label>
+                <input id="name" name="name" type="text" class="dfinput" value="${storePage.name}" datatype="*"/>
+              <i class="Validform_checktip"></i>
+              <label class="Validform_label" style="display: none;">应用名称</label>
+            </li>           
+            <li>
+              <label class="from-label-title">资产编码:</label>
+                <input id="code" name="code" type="text" class="dfinput" value="${storePage.code}" datatype="*"/>
+              <i class="Validform_checktip"></i>
+              <label class="Validform_label" style="display: none;">资产编码</label>
+            </li>
+            <li>
+             <label class="from-label-title">资产类别:</label>
+               <label class="from-label-title"><t:listDictParse parseId="${storePage.type}" style="1" typecode="zclb"></t:listDictParse></label>
+               <input name="type" id="type" type="hidden" value="${storePage.type}">
+           </li>
+            <li>
+              <label class="from-label-title">版本:</label>
+                <input id="version" name="version" type="text" class="dfinput"  value="${storePage.version}"/>
+              <i class="Validform_checktip"></i>
+            </li>           
+            <li>
+              <label class="from-label-title">厂商:</label>
+              <t:dictSelect field="manufacturer" type="list"
+                                        typeGroupCode="mfrs" defaultVal="${storePage.manufacturer}" hasLabel="false"  title="所属项目"></t:dictSelect>
+              <i class="Validform_checktip"></i>
+            </li>               
+            <li>
+              <label class="from-label-title">供应商:</label>
+                <input id="supplier" name="supplier" type="text" class="dfinput" value="${storePage.supplier}"/>
+              <i class="Validform_checktip"></i>
+            </li>
+            <li>
+             <label class="from-label-title">入库时间:</label>
+               <input id="storageTime" name="storageTime" type="text" class="Wdate" onClick="WdatePicker({dateFmt: 'yyyy-MM-dd HH:mm:ss'})" value="${storePage.storageTime}" datatype="*"/>
+             <i class="Validform_checktip"></i>
+             <label class="Validform_label" style="display: none;">入库时间</label>
+            </li>               
+            <li>
+              <label class="from-label-title">部署时间:</label>
+                <input id="deployTime" name="deployTime" type="text"  value="${storePage.deployTime}" class="Wdate" onClick="WdatePicker()"/>
+              <i class="Validform_checktip"></i>
+            </li>           
+            <li>
+              <label class="from-label-title">购买时间:</label>
+                <input id="payTime" name="payTime" type="text"  value="${storePage.payTime}" class="Wdate" onClick="WdatePicker()" datatype="*"/>
+              <i class="Validform_checktip"></i>
+              <label class="Validform_label" style="display: none;">购买时间</label>
+            </li>           
+            <li>
+              <label class="from-label-title">维保到期时间:</label>
+                <input id="repairEndTime" name="repairEndTime"  value="${storePage.repairEndTime}" type="text" class="Wdate" onClick="WdatePicker({ dateFmt: 'yyyy-MM-dd HH:mm:ss' })" datatype="*"/>
+              <i class="Validform_checktip"></i>
+              <label class="Validform_label" style="display: none;">维保到期时间</label>
+            </li>           
+            <li>
+              <label class="from-label-title">应用价格:</label>
+                <input id="code" name="amount" type="text"  value="${storePage.amount}" class="dfinput" datatype="/^-?[1-9]+(\.\d+)?$|^-?0(\.\d+)?$|^-?[1-9]+[0-9]*(\.\d+)?$/" nullmsg="不能为空" errormsg="必须为数字，可以有小数"/>
+<!--                 <input type="text" class="input-text" value="" placeholder="请输入**" id="title" name="testtt" datatype="/^-?[1-9]+(\.\d+)?$|^-?0(\.\d+)?$|^-?[1-9]+[0-9]*(\.\d+)?$/" nullmsg="不能为空" errormsg="必须为数字，可以有小数">
+ -->                
+              <i class="Validform_checktip"></i>
+              <label class="Validform_label" style="display: none;">应用价格</label>
+            </li>
 				<li>
 					<label class="from-label-title">
 							合同文件:

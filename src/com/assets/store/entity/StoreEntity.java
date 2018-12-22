@@ -751,6 +751,22 @@ public class StoreEntity implements java.io.Serializable {
 	public void setVersion(String version) {
 		this.version = version;
 	}
+
+	public String getManufacturer() {
+		return manufacturer;
+	}
+
+	public void setManufacturer(String manufacturer) {
+		this.manufacturer = manufacturer;
+	}
+
+	public String getSupplier() {
+		return supplier;
+	}
+
+	public void setSupplier(String supplier) {
+		this.supplier = supplier;
+	}
 	
 	
 }
