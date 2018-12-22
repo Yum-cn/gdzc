@@ -103,7 +103,7 @@ $(document).ready(function(){
 									<td><input name="id" id="id" type="checkbox" value="${resultList.id}" />	</td>	
 									<td><t:listDictParse parseId="${resultList.groupTypeCode}" style="1" typecode="groupType"></t:listDictParse></td>		
 									<td><t:listDictParse parseId="${resultList.netTypeCode}" style="1" typecode="netType"></t:listDictParse></td>
-									<td>sbbm00000${stu.index+1 }</td>	
+									<td>${resultList.code}</td>	
 									<td>${resultList.name}</td>
 									<td>${resultList.payTime}<%-- <fmt:formatDate value="${resultList.storageTime}" pattern="yyyy-MM-dd"/> --%></td>
 									<c:set var="nowDate" value="<%=System.currentTimeMillis()%>"></c:set> 
