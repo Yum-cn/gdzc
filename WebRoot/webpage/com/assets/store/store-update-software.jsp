@@ -123,7 +123,7 @@ function uploadTemplateCallBack(url,name){
             </li>           
             <li>
               <label class="from-label-title">维保到期时间:</label>
-                <input id="repairEndTime" name="repairEndTime"  value="${storePage.repairEndTime}" type="text" class="Wdate" onClick="WdatePicker({ dateFmt: 'yyyy-MM-dd HH:mm:ss' })" datatype="*"/>
+                <input id="repairEndTime" name="repairEndTime"  value="${storePage.repairEndTime}" type="text" class="Wdate" onClick="WdatePicker()" datatype="*"/>
               <i class="Validform_checktip"></i>
               <label class="Validform_label" style="display: none;">维保到期时间</label>
             </li>           

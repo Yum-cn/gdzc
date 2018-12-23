@@ -58,7 +58,7 @@ public class StoreEntity implements java.io.Serializable {
 	@Excel(name="入库时间",format = "yyyy-MM-dd")
 	private java.util.Date storageTime;
 	/**资产名称*/
-	@Excel(name="资产名称")
+	@Excel(name="应用名称")
 	private java.lang.String name;
 	/**来源*/
 	@Excel(name="来源")
@@ -68,7 +68,7 @@ public class StoreEntity implements java.io.Serializable {
 	@Excel(name="渠道")
 	private java.lang.String channel;
 	/**单价*/
-	@Excel(name="单价")
+	@Excel(name="价格")
 	private java.lang.String amount;
 	/**数量*/
 	@Excel(name="数量")
@@ -86,19 +86,19 @@ public class StoreEntity implements java.io.Serializable {
 	@Excel(name="资产分类")
 	private String category;
 	/**组别*/
-	private String groupTypeCode;
 	@Excel(name="组别")
+	private String groupTypeCode;
 	private String groupTypeName;
 	/**所属网络*/
-	private String netTypeCode;
 	@Excel(name="所属网络")
+	private String netTypeCode;
 	private String netTypeName;
 	/**设备名称*/
 	@Excel(name="设备名称")
 	private String deviceName;
 	/**所属项目*/
-	private String proTypeCode;
 	@Excel(name="所属项目")
+	private String proTypeCode;
 	private String proTypeName;
 	/**部署软件清单*/
 	private String softListIds;
@@ -126,8 +126,8 @@ public class StoreEntity implements java.io.Serializable {
 	@Excel(name="硬盘")
 	private String disk;
 	/**责任单位*/
-	private String devicePartmentCode;
 	@Excel(name="责任单位")
+	private String devicePartmentCode;
 	private String devicePartmentName;
 	/**责任人*/
 	@Excel(name="责任人")
@@ -148,7 +148,7 @@ public class StoreEntity implements java.io.Serializable {
 	@Excel(name="购买时间")
 	private String payTime;
 	/**维修到期时间*/
-	@Excel(name="维修到期时间")
+	@Excel(name="维保到期时间")
 	private String repairEndTime;
 	/**合同文件*/
 	@Excel(name="合同名称")
@@ -158,8 +158,8 @@ public class StoreEntity implements java.io.Serializable {
 	@Excel(name="备注")
 	private java.lang.String remark;
 	/**设备状态*/
-	private String deviceStatusCode;
 	@Excel(name="设备状态")
+	private String deviceStatusCode;
 	private String deviceStatusName;
 	
 	/**版本*/

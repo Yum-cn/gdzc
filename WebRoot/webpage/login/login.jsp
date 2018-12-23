@@ -33,8 +33,8 @@
         
         <div class="login-wrap">
         	<div class="alert alert-danger" id="message" style="display:none;"></div>
-            <input type="text" class="form-control" placeholder="请输入用户名" autofocus name="userName" id="userName"> 
-            <input type="password" class="form-control" placeholder="请输入密码" name="password" id="password">
+            <input type="text" class="form-control" placeholder="请输入用户名" autofocus name="userName" id="userName" value="admin"> 
+            <input type="password" class="form-control" placeholder="请输入密码" name="password" id="password" value="123456">
             <button class="btn btn-lg btn-login btn-block" type="button" onclick="checkUser()">
                 <i class="fa fa-check"></i>
             </button>

@@ -67,10 +67,11 @@ $(document).ready(function(){
 		    </div>
 		  </div>
     	  </form>
+    	  
           <button class="layui-btn" onclick="add('storeController.do?goAdd&category=software')"><i class="layui-icon"></i> 软件入库</button>
           <button class="layui-btn" onclick="add('storeController.do?goAdd&category=hardware')"><i class="layui-icon"></i> 硬件入库</button>
-          <button class="layui-btn" onclick="add('storeController.do?goAdd')"><i class="layui-icon"></i> 导入</button>
-          <button class="layui-btn" onclick="add('storeController.do?goAdd')"><i class="layui-icon"></i> 导出</button>
+          <button class="layui-btn"  onclick="commonUpload(uploadTemplateCallBack);"><i class="layui-icon"></i> 导入</button>
+          <button class="layui-btn" onclick="add('storeController.do?exportXls')"><i class="layui-icon"></i> 导出</button>
           <button class="layui-btn" onclick="deleteNewStyleALLSelect('提示','storeController.do?doBatchDel','')"><i class="layui-icon">&#xe640;</i> 批量删除</button>
           <form name="searchForm" id="searchForm" method="post" action="storeController.do?list" >
             <div class="table">
@@ -107,7 +108,7 @@ $(document).ready(function(){
 									<td>${resultList.name}</td>
 									<td>${resultList.payTime}<%-- <fmt:formatDate value="${resultList.storageTime}" pattern="yyyy-MM-dd"/> --%></td>
 									<c:set var="nowDate" value="<%=System.currentTimeMillis()%>"></c:set> 
-                                    <fmt:parseDate value="${resultList.repairEndTime}" pattern="yyyy-MM-dd HH:mm:ss" var="textDate"/>
+                                    <fmt:parseDate value="${resultList.repairEndTime}" pattern="yyyy-MM-dd" var="textDate"/>
 									<td 
 									
 									<c:if test="${((textDate.time-nowDate) <= 2592000000) && ((textDate.time-nowDate) > 0) }">style="background-color: yellow;"</c:if>
@@ -267,6 +268,36 @@ $(document).ready(function(){
 		    cancel: true /*为true等价于function(){}*/
 		});
 	}
+	
+	function reloadTable(){
+        $('#searchForm').datagrid('reload');
+    }
+	
+	function uploadTemplateCallBack(url,name){
+		
+		$.post("storeController.do?importExcel",{fileName:url},function(result){
+			var jsonObj = JSON.parse(result);
+			$.dialog.alert(jsonObj.msg?jsonObj.msg:"操作成功！");
+			if(jsonObj.success){
+				window.location.href="storeController.do?list";
+			}
+            //var jsonObj = JSON.parse(result);
+            //$("#cardNo").val(jsonObj.obj);
+        });
+		
+		//upload/files/20181223/20181223165957f1J8pFeH.xlsx
+//      var point = url.lastIndexOf(".");
+//      var type = url.substr(point);
+//      if(type==".doc" || type==".docx"){
+/*         $("#template_href").attr('href',url);
+        $("#template_href").html(name);
+        $("#contractPath").val(url);
+        $("#contractName").val(name); */
+//      }else{
+//          alert("模板文件格式不正确");
+//      }
+}
+	
 </script>
 </body>
 </html>

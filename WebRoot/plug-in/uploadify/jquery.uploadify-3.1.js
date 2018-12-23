@@ -2102,7 +2102,7 @@ SWFUpload.Console.writeLine = function(d) {
 						swfuploadify.queueData.uploadSize = 0;
 						swfuploadify.queueData.bytesUploaded = 0;
 						swfuploadify.queueData.uploadQueue = [];
-
+						debugger;
 						// Upload the files
 						if (args[0]) {
 							if (args[0] == '*') {
